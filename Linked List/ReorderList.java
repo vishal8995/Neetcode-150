@@ -31,7 +31,34 @@ public class ReorderList {
 
     public static void reorderList(ListNode head) {
 
-        // TO-DO
+        // Two Pointers: Fast and Slow to find mid = start of second half
+        ListNode slow = head, fast = head.next;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // Reversing the Second Half of the List
+        ListNode second = slow.next, prev = null;
+        slow.next = null;
+        while (second != null) {
+            ListNode temp = second.next;
+            second.next = prev;
+            prev = second;
+            second = temp;
+        }
+
+        // Merging the Two Lists
+        ListNode first = head;
+        second = prev;
+        while (second != null) {
+            ListNode temp1 = first.next, temp2 = second.next;
+            first.next = second;
+            second.next = temp1;
+            first = temp1;
+            second = temp2;
+        }
+
     }
 
     public static void main(String[] args) {
