@@ -45,6 +45,7 @@ public class BalancedBinarytree {
         }
     }
 
+    // Vishal
     public static boolean isBalanced(TreeNode root) {
 
         boolean[] isBalanced = new boolean[] { true };
@@ -62,6 +63,32 @@ public class BalancedBinarytree {
         if (Math.abs(left - right) > 1)
             isBalanced[0] = false;
         return 1 + Math.max(left, right);
+    }
+
+    // Neetcode
+    public static boolean isBalanced2(TreeNode root) {
+
+        // We take an int array and signify 1 with balanced
+        // check if balanced is 1
+        return dfs(root)[0] == 1;
+    }
+
+    public static int[] dfs(TreeNode root) {
+
+        if (root == null)
+            return new int[] { 1, 0 }; // Root node is balanced(1) and height 0
+
+        int[] left = dfs(root.left);
+        int[] right = dfs(root.right);
+
+        // If both nodes, left and right return 1 signifying balanced and their height
+        // difference is <= 1
+        boolean balanced = (left[0] == 1 && right[0] == 1) && (Math.abs(left[1] - right[1]) <= 1);
+
+        int height = 1 + (Math.max(left[1], right[1]));
+
+        // Return balanced or not and height
+        return new int[] { balanced ? 1 : 0, height };
 
     }
 
