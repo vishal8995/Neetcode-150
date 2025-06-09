@@ -7,6 +7,7 @@ public class ContainerWithMostWater {
         int l = 0, r = len - 1;
 
         while (l < r) {
+            // Water can be filled to max height of min of left and right
             int area = Math.min(heights[l], heights[r]) * (r - l);
 
             max = Math.max(max, area);

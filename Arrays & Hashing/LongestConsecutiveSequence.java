@@ -12,6 +12,7 @@ public class LongestConsecutiveSequence {
         int longest = 0;
         for (int n : numSet) {
             if (!numSet.contains(n - 1)) {
+                // Start of Sequence
                 int length = 1;
                 while (numSet.contains(n + length))
                     length++;
