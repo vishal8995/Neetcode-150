@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class BinaryTreeLevelOrderTraversal {
+public class BinaryTreeLevelOrderTraversal2 {
 
     public static class TreeNode {
         int val;
@@ -50,7 +50,7 @@ public class BinaryTreeLevelOrderTraversal {
                     q.add(temp.right);
             }
             if (level.size() > 0)
-                res.add(level);
+                res.add(0, level);
         }
 
         return res;
